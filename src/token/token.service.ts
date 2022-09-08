@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { JwtService as JWTService } from '@nestjs/jwt';
+import { JwtService } from '@nestjs/jwt';
 import { JwtDto } from './dto';
 
 @Injectable()
-export class JwtService {
-  constructor(private jwt: JWTService, private config: ConfigService) {}
+export class TokenService {
+  constructor(
+    private readonly jwt: JwtService,
+    private readonly config: ConfigService,
+  ) {}
 
   async generate(content: JwtDto) {
     const token = this.jwt.signAsync(content, {

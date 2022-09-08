@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from './jwt/jwt.module';
+import { TokenModule } from './token/token.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -7,7 +7,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    JwtModule,
+    TokenModule,
   ],
 })
 export class AppModule {}
