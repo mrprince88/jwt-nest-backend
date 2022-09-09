@@ -10,7 +10,7 @@ export class TokenService {
     private readonly config: ConfigService,
   ) {}
 
-  async generate(content: JwtDto) {
+  async generate(content: JwtDto): Promise<String> {
     const token = this.jwt.signAsync(content, {
       expiresIn: '1m',
       secret: this.config.get('SECRET_KEY'),
@@ -19,7 +19,7 @@ export class TokenService {
     return token;
   }
 
-  async validator(content: string) {
+  async validator(content: string): Promise<Boolean> {
     const res = this.jwt
       .verifyAsync(content, {
         secret: this.config.get('SECRET_KEY'),
